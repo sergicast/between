@@ -1,0 +1,7 @@
+.exercise-one {
+    padding: 1em;
+    & h1 {
+        margin-top: 0;
+        margin-bottom: 1em;
+    }
+}
