@@ -1,5 +1,12 @@
+/**
+ * Function to obtain the gradient for the background.
+ * 
+ * @param {Number} leftProgess Left slider progress.
+ * @param {Number} rightProgess Right slider progress.
+ * @returns {String} Background style.
+ */
 export const getProgressStyles = (leftProgess, rightProgess) => {
     return `linear-gradient(to right, 
-        grey 0%, grey ${leftProgess + 1}%, aqua ${leftProgess + 1}%, 
-        aqua ${rightProgess + 1}%, grey ${rightProgess + 1}%, grey 100%)`;
+        #fff 0%, #fff ${leftProgess + 1}%, #000 ${leftProgess + 1}%, 
+        #000 ${rightProgess + 1}%, #fff ${rightProgess + 1}%, #fff 100%)`;
 };

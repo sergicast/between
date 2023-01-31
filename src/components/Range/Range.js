@@ -3,6 +3,7 @@ import './Range.scss';
 
 import { getProgressStyles, findStaticRange, getPixelsToMove, getSliderProgress } from '../../utils';
 
+
 export const Range = ({ range, staticRange = [] }) => {
 
     const sliderRefLeft = useRef(null);
@@ -14,7 +15,7 @@ export const Range = ({ range, staticRange = [] }) => {
     const [rightValue, setRightValue] = useState(range.max);
     const [leftProgess, setLeftProgress] = useState(0);
     const [rightProgress, setRightProgress] = useState(100);
-
+    const isStaticRange = staticRange.length > 0;
 
     useEffect(() => {
         inputRangeRef.current.style.background = getProgressStyles(leftProgess, rightProgress);
@@ -36,6 +37,7 @@ export const Range = ({ range, staticRange = [] }) => {
     const onMouseMove = ({ clientX }, isLeftSlider) => {
         const { min, max } = range;
         const { left, right, progress } = getPositionAndProgress(clientX);
+        const circleWidth = sliderRefLeft.current.clientWidth / 2;
 
         let value;
         let sliderRef = isLeftSlider ? sliderRefLeft : sliderRefRight;
@@ -47,13 +49,14 @@ export const Range = ({ range, staticRange = [] }) => {
             value = progress > max ? max : progress <= leftValue ? leftValue + 1 : progress;
         }
 
-        if (staticRange.length > 0) {
+        if (isStaticRange) {
             const selectedRange = findStaticRange(staticRange, value);
             if (selectedRange) {
                 setValue(selectedRange);
                 const pixelsToMove = isLeftSlider ?
-                    getPixelsToMove(range, selectedRange, left, right).leftPixelsAdd - 12 :
-                    getPixelsToMove(range, selectedRange, left, right).rightPixelsAdd;
+                    getPixelsToMove(range, selectedRange, left, right).leftPixelsAdd - circleWidth :
+                    getPixelsToMove(range, selectedRange, left, right).rightPixelsAdd + circleWidth;
+
                 sliderRef.current.style.left = pixelsToMove + "px";
                 sliderRef.current.style.cursor = 'grabbing';
             }
@@ -62,7 +65,7 @@ export const Range = ({ range, staticRange = [] }) => {
             const isLinesCross = isLeftSlider ? (progress < rightValue) : (progress > leftValue);
             if (clientX > left && clientX < right && isLinesCross) {
                 let currentX = isLeftSlider ? clientX - left : (clientX) - right;
-                sliderRef.current.style.left = (currentX + (isLeftSlider ? -5 : 8)) + "px";
+                sliderRef.current.style.left = (currentX + (isLeftSlider ? -circleWidth : circleWidth)) + "px";
             }
         }
     };
@@ -126,14 +129,7 @@ export const Range = ({ range, staticRange = [] }) => {
                         setIsSlidingLeft(true);
                         sliderRefLeft.current.style.cursor = 'grabbing';
                     }}
-                    onPointerDown={(e) => {
-                        setIsSlidingRight(false);
-                        setIsSlidingLeft(true);
-                        sliderRefLeft.current.style.cursor = 'grabbing';
-                    }}
                     onMouseUp={(e) => sliderRefLeft.current.style.cursor = 'grab'}
-                    onPointerUp={(e) => sliderRefLeft.current.style.cursor = 'grab'}
-                    
                 >
                 </div>
                 <div
@@ -145,28 +141,21 @@ export const Range = ({ range, staticRange = [] }) => {
                         sliderRefRight.current.style.cursor = 'grabbing';
                     }}
                     onMouseUp={(e) => sliderRefRight.current.style.cursor = 'grab'}
-                    onPointerDown={(e) => {
-                        setIsSlidingLeft(false);
-                        setIsSlidingRight(true);
-                        sliderRefRight.current.style.cursor = 'grabbing';
-                    }}
-                    onPointerUp={(e) => sliderRefRight.current.style.cursor = 'grab'}
                 >
                 </div>
             </div>
             <div className="range__values">
                 <input
                     onChange={({ target: { value } }) => onSetNewValue(value, true)}
-                    value={leftValue}
+                    value={isStaticRange ? leftValue : Math.trunc(leftValue)}
                     type="number"
-                    disabled={staticRange.length > 0}
+                    disabled={isStaticRange}
                 />
-                <span>-</span>
                 <input
-                    value={rightValue}
+                    value={isStaticRange ? rightValue : Math.trunc(rightValue)}
                     onChange={({ target: { value } }) => onSetNewValue(value, false)}
                     type="number"
-                    disabled={staticRange.length > 0}
+                    disabled={isStaticRange}
                 />
             </div>
         </>

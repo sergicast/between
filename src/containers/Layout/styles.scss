@@ -4,19 +4,41 @@
     grid-template-areas:
         'header header'
         'nav main';
+
+    & header {
+        grid-area: header;
+        background-color: #ffffff;
+        height: 15vh;
+    }
+
+    & nav {
+        grid-area: nav;
+        background-color: #787878;
+        height: 85vh;
+    }
+
+    & main {
+        grid-area: main;
+        background-color: #f0f0f0;
+        height: 85vh;
+        padding: 35px;
+    }
+
+    @media screen and (max-width: 576px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
         & header {
-            grid-area: header;
-            background-color: #555E69;
             height: 15vh;
         }
+
         & nav {
-            grid-area: nav;
-            background-color: #382c1e;
-            height: 85vh;
+            height: 5vh;
         }
+
         & main {
-            grid-area: main;
-            background-color: #fff;
-            height: 85vh;
+            height: 70vh;
         }
+    }
 }

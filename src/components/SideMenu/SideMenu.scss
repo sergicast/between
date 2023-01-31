@@ -1,3 +1,31 @@
-nav li {
-    list-style: none;
+nav {
+    padding-top: 24px;
+    & li {
+        list-style: none;
+        height: 48px;
+
+        & a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+    } 
+}
+
+@media screen and (max-width: 576px) {
+    nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ul {
+            padding: 0;
+            display: flex;
+            & li {
+                margin: 0 5px 0 5px;
+            }
+        }
+    }
 }
