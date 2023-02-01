@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 
 import './SideMenu.scss'
 
+/**
+ * @component Left Menu with Exercies links.
+ * @returns {React.ReactElement}
+ */
 export const SideMenu = () => {
     return (
         <nav>

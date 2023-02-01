@@ -3,7 +3,10 @@ import './ExerciseOne.scss';
 import { Range } from '../../components';
 import { getMinMaxRange } from '../../services'
 
-
+/**
+ * @component Exercise one page.
+ * @returns {React.ReactElement}
+ */
 export const ExerciseOne = () => {
 
     const [range, setRange] = useState();

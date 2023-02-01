@@ -1,17 +1,20 @@
 header {
     display: grid;
-    grid-template-columns: 1fr 1fr 7fr;    
+    grid-template-columns: 1fr 1fr 7fr;
+
     img {
         margin-left: 25px;
         justify-self: start;
         align-self: center;
         width: 160px;
-    }   
+    }
 }
+
 @media screen and (max-width: 576px) {
     header {
         display: flex;
         justify-content: center;
+
         & img {
             margin: 0 4px 0 4px;
         }

@@ -4,7 +4,10 @@ import './exerciseTwo.scss';
 import { Range } from '../../components';
 import { getStaticsRanges } from '../../services';
 
-
+/**
+ * @component Exercise Two page.
+ * @returns {React.ReactElement}
+ */
 export const ExerciseTwo = () => {
 
     const [staticRange, setStaticRange] = useState();

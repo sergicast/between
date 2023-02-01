@@ -3,7 +3,10 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { ExerciseOne, ExerciseTwo } from '../pages';
 
-
+/**
+ * @component App routes pages.
+ * @returns {React.ReactElement}
+ */
 export const MainRoutes = function () {
 
     return (

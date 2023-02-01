@@ -3,7 +3,21 @@ import './Range.scss';
 
 import { getProgressStyles, findStaticRange, getPixelsToMove, getSliderProgress } from '../../utils';
 
+/**
+ * Custom Range input.
+ * @typedef RangeValues
+ * @property {number} min Min value of the Range.
+ * @property {number} max Max value of the Range.
+ */
 
+/**
+ * @component Component of custom input range
+ * @param {object} props Component properties.
+ * @param {RangeValues} props.range Object with max and min values.
+ * @param {number[]} props.staticRange Array with the static ranges.
+ * 
+ * @returns {React.ReactElement}
+ */
 export const Range = ({ range, staticRange = [] }) => {
 
     const sliderRefLeft = useRef(null);
@@ -51,7 +65,7 @@ export const Range = ({ range, staticRange = [] }) => {
 
         if (isStaticRange) {
             const selectedRange = findStaticRange(staticRange, value);
-            if (selectedRange) {
+            if (selectedRange && selectedRange !== rightValue && selectedRange !== leftValue) {
                 setValue(selectedRange);
                 const pixelsToMove = isLeftSlider ?
                     getPixelsToMove(range, selectedRange, left, right).leftPixelsAdd - circleWidth :
@@ -146,12 +160,14 @@ export const Range = ({ range, staticRange = [] }) => {
             </div>
             <div className="range__values">
                 <input
+                    alt="num_min"
                     onChange={({ target: { value } }) => onSetNewValue(value, true)}
                     value={isStaticRange ? leftValue : Math.trunc(leftValue)}
                     type="number"
                     disabled={isStaticRange}
                 />
                 <input
+                    alt="num_max"
                     value={isStaticRange ? rightValue : Math.trunc(rightValue)}
                     onChange={({ target: { value } }) => onSetNewValue(value, false)}
                     type="number"
