@@ -33,5 +33,5 @@ export const getPixelsToMove = (range, selectedRange, left, right) => {
     return {
         leftPixelsAdd: pixelsLeft,
         rightPixelsAdd: pixelsRight
-    }
+    };
 };

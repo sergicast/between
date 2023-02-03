@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { ExerciseOne, ExerciseTwo } from '../pages';
@@ -16,5 +16,5 @@ export const MainRoutes = function () {
             <Route path="/exercise-two" element={<ExerciseTwo />} />
             <Route path="*" element={<h1>No existe esta ruta</h1>} />
         </Routes>
-    )
+    );
 };

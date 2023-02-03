@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.scss';
-import { Header, SideMenu } from '../../components'
+import { Header, SideMenu } from '../../components';
 
 /**
  * @component Distribution page.

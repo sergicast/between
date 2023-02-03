@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import './SideMenu.scss'
+import './SideMenu.scss';
 
 /**
  * @component Left Menu with Exercies links.

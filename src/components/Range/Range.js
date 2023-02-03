@@ -40,7 +40,7 @@ export const Range = ({ range, staticRange = [] }) => {
         setRightProgress(getSliderProgress(rightValue, range));
     }, [leftValue, rightValue]);
 
-    const getPositionAndProgress = (clientX, type) => {
+    const getPositionAndProgress = (clientX) => {
         const { left, right } = inputRangeRef.current.getBoundingClientRect();
         const convertionNum = (range.max - range.min) / (right - left);
         const progress = ((clientX - left) * convertionNum) + range.min;

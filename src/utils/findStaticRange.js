@@ -12,6 +12,6 @@ export const findStaticRange = (staticRange, value) => {
             selectedNum = num
         }
     });
-    if(value === staticRange[0]) return value
+    if(value === staticRange[0]) return value;
     return selectedNum;
 };
