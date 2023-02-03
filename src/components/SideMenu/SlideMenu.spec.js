@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import SideMenu from './';

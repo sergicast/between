@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import './Range.scss';
 
 import { getProgressStyles, findStaticRange, getPixelsToMove, getSliderProgress } from '../../utils';

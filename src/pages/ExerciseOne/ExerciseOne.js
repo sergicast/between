@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import './ExerciseOne.scss';
 import { Range } from '../../components';
 import { getMinMaxRange } from '../../services'

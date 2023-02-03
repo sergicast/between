@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, cleanup, waitFor, screen } from '@testing-library/react';
 import { ExerciseOne } from './ExerciseOne';
 import { getMinMaxRange } from '../../services';

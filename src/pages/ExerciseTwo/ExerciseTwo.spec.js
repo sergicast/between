@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, cleanup, waitFor, screen } from '@testing-library/react';
 import { ExerciseTwo } from './ExerciseTwo';
 import { getStaticsRanges } from '../../services';

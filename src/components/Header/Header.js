@@ -1,4 +1,3 @@
-import React from 'react';
 import './Header.scss';
 
 import betweenLogo from '../../assets/img/logo-between.svg';

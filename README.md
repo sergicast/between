@@ -12,6 +12,8 @@ In the root
 <pre>
 npm start
 </pre>
+App -->  http://localhost:8080/<br> 
+Api -->  http://localhost:3000/
 ### 4- For run the test
 In the root
 <pre>
